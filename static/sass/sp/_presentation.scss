@@ -1,0 +1,42 @@
+.sp-presentation {
+  display: flex;
+  justify-content: center;
+  margin: 3em 0 4em;
+  &-contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &-imgs {
+    position: relative;
+    max-width: 415px;
+    margin-right: 170px;
+    .img-amy {
+      max-width: 370px;
+      position: absolute;
+      bottom: 0;
+      right: -100px;
+    }
+  }
+  h4 {
+    font-size: 2em;
+  }
+  h5 {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0 0 1.5em;
+  }
+  p {
+    display: flex;
+    gap: 12px;
+    margin: 18px 0;
+    img {
+      width: 25px;
+    }
+    &:last-child {
+      img {
+        width: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>Product</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      {% block menu%}
+      <div class="menu">
+        <div class="menu-logo">
+          <a href="/users/index/"
+            ><img src="/media/assets/gamestore.svg" alt=""
+          /></a>
+          <span>PERÚ</span>
+        </div>
+        <form
+          class="menu-search-container"
+          method="GET"
+          action="{% url 'product:list_filter_product' %}"
+        >
+          <label class="menu-search" for="searchmenu"
+            ><img src="/media/assets/icon-search.svg" alt="" />
+            <input
+              type="text"
+              name="buscar"
+              id="searchmenu"
+              placeholder="Buscar"
+              {{request.GET.buscar}}
+            />
+          </label>
+        </form>
+        <div class="menu-actions">
+          <div class="menu-cart itemOptions" id="menu-cart">
+            <span class="menu-cart-count">3</span>
+            <img
+              class="menu-cart-icon"
+              src="/media/assets/icon-cart.svg"
+              alt=""
+            />
+            <div class="itemOptions-options">
+              {% if not user.username %}
+              <div class="itemOptions-item">
+                Inicia sesion para usar el carrito
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="menu-user itemOptions" id="menu-user">
+            {% if user.username and user.img %}
+            <img class="menu-user-icon" src="{{user.image.url}}" alt="" />
+            {% else %}
+            <img
+              class="menu-user-icon"
+              src="/media/assets/icon-user.svg"
+              alt=""
+            />
+            {% endif %}
+            <div class="itemOptions-options">
+              {% if user.username and user.img %}
+              <p class="itemOptions-item">{{user.username}}</p>
+              <p class="itemOptions-item">
+                {{user.first_name}} {{user.last_name}}
+              </p>
+              <a
+                class="itemOptions-item itemOptions-item_link"
+                href="{% url 'user:logout' %}"
+                >Logout</a
+              >
+              {% else %}
+              <a
+                class="itemOptions-item itemOptions-item_link"
+                href="{% url 'user:login_render' %}"
+                >Login</a
+              >
+              <a
+                class="itemOptions-item itemOptions-item_link"
+                href="{% url 'user:signup_render' %}"
+                >Signup</a
+              >
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock menu%} {% block content%} {% endblock content%}
+      <div class="footer"><img src="/media/assets/gamestore.svg" /></div>
+    </div>
+  </body>
+</html>

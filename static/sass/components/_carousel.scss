@@ -1,0 +1,70 @@
+@use '../var';
+.carousel {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  &-container {
+    position: relative;
+    width: auto;
+    transition: transform 0.5s ease-in-out;
+    width: max-content;
+  }
+  &-item {
+    display: inline-flex;
+    z-index: $zBot;
+    margin-right: 1em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &-action {
+    &-back,
+    &-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: $zTop;
+      transition: transform 0.3s;
+      cursor: pointer;
+      &:hover {
+        transform: translateY(-50%) scale(1.1);
+      }
+    }
+    &-back {
+      left: 16px;
+    }
+    &-next {
+      right: 16px;
+    }
+  }
+  &-shadow {
+    &-right,
+    &-left {
+      position: absolute;
+      width: 100px;
+      top: 0;
+      height: 100%;
+      z-index: $zMiddle;
+      display: none;
+    }
+    &-right {
+      display: none;
+      right: 0;
+      background: linear-gradient(
+        0.25turn,
+        rgba(255, 0, 0, 0) 70%,
+        rgba(56, 56, 56, 0.692)
+      );
+    }
+    &-left {
+      left: 0;
+      background: linear-gradient(
+        -0.25turn,
+        rgba(255, 0, 0, 0) 70%,
+        rgba(56, 56, 56, 0.692)
+      );
+    }
+    // background-color: rgba(61, 58, 58, 0.295);
+  }
+}

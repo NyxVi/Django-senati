@@ -1,0 +1,13 @@
+.section {
+  color: white;
+  margin: 2em 0;
+  &-title {
+    margin-bottom: 0.6em;
+  }
+  &-divider {
+    color: rgba(167, 167, 167, 0.911);
+  }
+  &-body {
+    padding: 2em 0;
+  }
+}

@@ -1,0 +1,25 @@
+{% extends "home.html" %} {% load static %} {% block content %}
+<div class=" container sp-filter">
+  {% if product %} {% for prod in product %}
+  <a
+    class="card card_link card_small"
+    href="{% url 'product:detail_product' prod.product_id %}"
+  >
+    <div class="card-img-wrapper">
+      {% if prod.image %}
+      <img class="card-img" src="{{prod.image.url}}" alt="" />
+      {% endif %}
+    </div>
+    <div class="card-body">
+      <p class="card-title">{{prod.name}}</p>
+      <p class="card-category">{{prod.category}}</p>
+      <p class="card-price">S./ {{prod.price}}</p>
+    </div>
+  </a>
+  {% endfor %} {% else %}
+  <h3>Lo sentimos, no encotramos el producto que buscas</h3>
+  {% endif %}
+</div>
+  <script type="module" src="{% static 'js/product.js' %}"></script>
+  {% endblock %}
+</div>

@@ -1,0 +1,74 @@
+@import '../theme/menu';
+.menu {
+  padding: 1em;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: $zTop + 5;
+  &-logo {
+    a {
+      display: inline-block;
+      margin-right: 0.6em;
+    }
+  }
+  &-search {
+    background-color: white;
+    padding: 0.6em;
+    display: flex;
+    align-items: center;
+    border-radius: 0.4em;
+    max-width: 600px;
+    margin: 0 auto;
+    & img {
+      width: 24px;
+    }
+    & input {
+      padding: 0 0.8em;
+      width: 100%;
+    }
+
+    &-container {
+      flex-grow: 1;
+    }
+  }
+  &-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    $iconWitdh: 30px;
+    width: 260px;
+    & .menu-cart {
+      margin: 0 1em 0 0.5em;
+      cursor: pointer;
+      position: relative;
+      &-count {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background-color: $red;
+        color: white;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        transform: scale(0.9);
+        top: -40%;
+        right: -30%;
+        &.is-active {
+          display: flex;
+        }
+      }
+      &-icon {
+        width: $iconWitdh;
+      }
+    }
+    & .menu-user {
+      margin: 0 0.5em;
+      cursor: pointer;
+      &-icon {
+        width: $iconWitdh;
+      }
+    }
+  }
+}

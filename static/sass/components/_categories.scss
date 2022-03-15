@@ -1,0 +1,89 @@
+@use '../var';
+.categories {
+  display: flex;
+  justify-content: center;
+  &-section {
+    flex-shrink: 1;
+    position: relative;
+    width: 320px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    cursor: pointer;
+    &_other {
+      background-color: rgb(64, 64, 65);
+      transition: background-color 0.4s, transform 0.4s;
+      width: 120px;
+      transform: scaleX(1);
+      .categories-title {
+        font-size: 24px;
+        transform: rotateZ(-90deg);
+        transition: transform 0.4s;
+      }
+      &:hover {
+        transform: scaleX(1.2);
+        background-color: rgba(96, 74, 147, 0.897);
+        .categories-title {
+          transform: rotateZ(0) scaleX(0.8);
+        }
+      }
+    }
+  }
+  &-section:hover &-body {
+    transform: translateY(0);
+  }
+  &-section:hover &-img {
+    // transform: rotateY(90deg);
+    transform: translateY(8%) scale(1.4) rotateZ(8deg) rotateY(180deg);
+    transition: transform 1s;
+  }
+  &-section:hover &-botShadow {
+    background-image: none;
+    background-color: rgba(0, 0, 0, 0.527);
+  }
+  &-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: $zMiddle;
+    transition: transform 0.5s;
+  }
+  &-botShadow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $zTop - 1;
+    // background: red;
+    background: linear-gradient(rgba(0, 0, 0, 0) 80%, rgb(0, 0, 0) 94%);
+    background-color: transparent;
+    transition: background-color 0.4s;
+  }
+  &-body {
+    position: relative;
+    width: 100%;
+    z-index: $zTop;
+    text-align: center;
+    transition: transform 0.5s;
+    transform: translateY(190%);
+    &-title {
+      font-size: 1.6em;
+      margin: 1em;
+    }
+    p {
+      margin: 0.5em 0;
+      font-weight: 500;
+    }
+    & > * {
+      text-shadow: -2px 2px 0px rgb(0, 0, 0);
+    }
+  }
+}

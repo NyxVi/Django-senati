@@ -1,0 +1,168 @@
+{% extends "home.html" %} {% load static %} {% block content %}
+<main class="container">
+  <div class="slider" id="slider-home">
+    <div class="slider-container">
+      <img src="/media/assets/Ofertas.png" class="slider-img" />
+      <img src="/media/assets/Ofertas2.png" class="slider-img" />
+      <img src="/media/assets/Ofertas.png" class="slider-img" />
+    </div>
+    <img src="/media/assets/icon-arrow-left.svg" class="slider-action-back" />
+    <img src="/media/assets/icon-arrow-right.svg" class="slider-action-next" />
+    <div class="slider-navigation"></div>
+  </div>
+  <div class="section">
+    <h3 class="section-title">Tendencia</h3>
+    <hr class="section-divider" />
+    <div class="section-body sp-tendencia">
+      {%for product in product_order_date %}
+      <a
+        class="card card_link card_horizontal"
+        href="{% url 'product:detail_product' product.product_id %}"
+      >
+        <div class="card-img-wrapper">
+          <!-- Esto se cambia -->
+          {% if product.image %}
+          <img class="card-img" src="{{product.image.url}}" alt="" />
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <p class="card-title">{{product.name}}</p>
+          <p class="card-category">{{product.category}}</p>
+          <p class="card-price">S./ {{product.price}}</p>
+        </div>
+      </a>
+      {% endfor%} {% comment %} reserva {% endcomment %}
+    </div>
+  </div>
+  <div class="section">
+    <h3 class="section-title">Novedades</h3>
+    <hr class="section-divider" />
+    <div class="section-body">
+      <div class="carousel" id="carousel-novedades">
+        <div class="carousel-container">
+          {% for product in product_order_date%}
+          <a
+            class="card card_link card_link_wScale card_small carousel-item"
+            href="{% url 'product:detail_product' product.product_id %}"
+          >
+            <div class="card-img-wrapper">
+              {% if product.image %}
+              <img class="card-img" src="{{product.image.url}}" alt="" />
+              {% endif %}
+            </div>
+            <div class="card-body">
+              <p class="card-title">{{product.name}}</p>
+              <p class="card-category">{{product.category}}</p>
+              <p class="card-price">S./ {{product.price}}</p>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        <img
+          src="/media/assets/icon-arrow-left.svg"
+          alt=""
+          class="carousel-action-back"
+        />
+        <img
+          src="/media/assets/icon-arrow-right.svg"
+          alt=""
+          class="carousel-action-next"
+        />
+        <div class="carousel-shadow-right"></div>
+        <div class="carousel-shadow-left"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3 class="section-title">Categorías</h3>
+    <hr class="section-divider" />
+    <div class="section-body">
+      <div class="categories">
+        <a
+          class="categories-section"
+          href="{% url 'product:list_category_product' 'Gaming' %}"
+        >
+          <img
+            src="/media/assets/categories-game.jpg"
+            alt=""
+            class="categories-img"
+          />
+          <div class="categories-body">
+            <h4 class="categories-body-title">Videojuegos</h4>
+            <p class="categories-body-detail">Riot</p>
+            <p class="categories-body-detail">Epic</p>
+            <p class="categories-body-detail">Blizzard</p>
+          </div>
+          <div class="categories-botShadow"></div>
+        </a>
+        <a
+          class="categories-section"
+          href="{% url 'product:list_category_product' 'Tecnologia' %}"
+        >
+          <img
+            src="/media/assets/categories-technology.jpg"
+            alt=""
+            class="categories-img"
+          />
+          <div class="categories-body">
+            <h4 class="categories-body-title">Videojuegos</h4>
+            <p class="categories-body-detail">Riot</p>
+            <p class="categories-body-detail">Epic</p>
+            <p class="categories-body-detail">Blizzard</p>
+          </div>
+          <div class="categories-botShadow"></div>
+        </a>
+        <a
+          class="categories-section"
+          href="{% url 'product:list_category_product' 'Ropa' %}"
+          >">
+          <img
+            src="/media/assets/categories-vestiment.jpeg"
+            alt=""
+            class="categories-img"
+          />
+          <div class="categories-body">
+            <h4 class="categories-body-title">Videojuegos</h4>
+            <p class="categories-body-detail">Riot</p>
+            <p class="categories-body-detail">Epic</p>
+            <p class="categories-body-detail">Blizzard</p>
+          </div>
+          <div class="categories-botShadow"></div>
+        </a>
+        <a
+          class="categories-section categories-section_other"
+          href="{% url 'product:list_category_product' 'Ropa' %}"
+        >
+          <h4 class="categories-title">Ver más</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="section sp-presentation">
+    <div class="sp-presentation-imgs">
+      <img class="img-map" src="/media/assets/peru.png" alt="" />
+      <img class="img-amy" src="/media/assets/amy-home-fast.png" alt="" />
+    </div>
+    <div class="sp-presentation-contenido">
+      <h4 class="section-body-title">¡GRACIAS POR VISITARNOS!</h4>
+      <h5>Realizamos envíos a todo el Perú</h5>
+      <p>
+        <img src="/media/assets/icon-security.svg" /><span
+          >Cuidamos tu producto hasta llegar a tus manos</span
+        >
+      </p>
+      <p>
+        <img src="/media/assets/icon-card.svg" /><span
+          >Diversas formas de pago, visa, Mastercard o en agentes</span
+        >
+      </p>
+      <p>
+        <img src="/media/assets/icon-track.svg" /><span
+          >Realiza seguimiento a tu producto</span
+        >
+      </p>
+    </div>
+  </div>
+</main>
+<script type="module" src="{% static 'js/index.js' %}"></script>
+{% endblock content %}

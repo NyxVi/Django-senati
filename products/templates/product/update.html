@@ -1,0 +1,70 @@
+{% block content %}
+
+
+<form method="POST" action=""  enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div>
+        <input  type="text" placeholder="ID" name="product_id" value="{{ product.product_id }}" readonly  />
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <div>
+        <input  type="text" placeholder="category" name="category" value="{{ product.category }}"/>
+        <select>
+            <option>-</option>
+            <option>Tec - Tecnologia</option>
+            <option>Ropa - Ropa</option>
+            <option>Gaming - Gaming</option>
+            <option>Otros - Otros</option>
+        </select>
+        {% for error in form.subject.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    
+    <div>
+        <input  type="text" placeholder="name" name="name" value="{{ product.name }}"/>
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+
+    <div>
+        <input  type="text" placeholder="description" name="description" value="{{ product.description }}"/>
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+
+    <div>
+        <input  type="number" placeholder="price" name="price" min="0" value="{{ product.price }}"/>
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+
+    <div>
+        <input  type="number" placeholder="stock" name="stock" min="0" value="{{ product.stock }}"/>
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+
+    <div>
+        {% if product.image  %}
+            <img src="{{product.image.url}}" width="10%" alt="" >
+        {% endif %}
+        <input  type="file" name="image" />
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+
+    <button type="submit">Update</button>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,85 @@
+.slider {
+  position: relative;
+  overflow: hidden;
+  $animationTime: 0.5s;
+  &-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    &.is-moving-next {
+      animation: next $animationTime ease-in-out;
+      transform: translateZ(0);
+      @keyframes next {
+        from {
+          transform: translateZ(0) translateX(0);
+        }
+        to {
+          transform: translateZ(0) translateX(-100%);
+        }
+      }
+    }
+    &.is-moving-back {
+      animation: back $animationTime ease-in-out;
+      transform: translateZ(0);
+      @keyframes back {
+        from {
+          transform: translateZ(0) translateX(0);
+        }
+        to {
+          transform: translateZ(0) translateX(100%);
+        }
+      }
+    }
+  }
+  &-img {
+    display: none;
+    width: 100%;
+    &.is-active {
+      display: block;
+      &.is-active-next {
+        position: absolute;
+        right: -100%;
+        top: 0;
+      }
+      &.is-active-back {
+        position: absolute;
+        left: -100%;
+        top: 0;
+      }
+    }
+  }
+  &-action-back,
+  &-action-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+  }
+  &-action-back {
+    left: 10px;
+  }
+  &-action-next {
+    right: 10px;
+  }
+  &-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding: 16px 0;
+    &-item {
+      cursor: pointer;
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+      border: 2px solid white;
+      &:hover,
+      &.is-active {
+        background-color: white;
+      }
+    }
+  }
+}

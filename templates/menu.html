@@ -1,0 +1,34 @@
+{% block header %} {% load static %}
+<div class="menu">
+  <div class="menu-logo">
+    <a href="/home.html"><img src="/media/assets/gamestore.svg" alt="" /></a>
+    <span>PERÚ</span>
+  </div>
+  <div class="menu-search-container">
+    <label class="menu-search" for="searchmenu"
+      ><img src="/media/assets/icon-search.svg" alt="" />
+      <input type="text" name="" id="searchmenu" placeholder="Buscar" />
+    </label>
+  </div>
+  <div class="menu-actions">
+    <div class="menu-cart itemOptions" id="menu-cart">
+      <span class="menu-cart-count is-active">3</span>
+      <img class="menu-cart-icon" src="/media/assets/icon-cart.svg" alt="" />
+      <div class="itemOptions-options">
+        <div class="itemOptions-item">Este seria un ejemplo</div>
+      </div>
+    </div>
+    <div class="menu-user itemOptions" id="menu-user">
+      <img class="menu-user-icon" src="/media/assets/icon-user.svg" alt="" />
+      <div class="itemOptions-options">
+        <a class="itemOptions-item itemOptions-item_link" href="#"
+          >Iniciar-sesion</a
+        >
+        <a class="itemOptions-item itemOptions-item_link" href="#"
+          >Registrarse</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block content %}{% endblock %}

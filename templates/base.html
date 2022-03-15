@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    {% block head_content %}
+        <title>
+            {% block title %}{% endblock %}
+        </title
+    {% endblock %}
+    
+</head>
+<body>
+
+    {% block header %}
+
+        <div>
+        {% if user.image %}
+            <img src="{{ user.image.url }}" class="rounded-circle" height="50"/>
+            <h5>@{{ user.username }} | {{user.first_name}} {{user.last_name}} </h5>
+            <a href="{% url 'user:logout' %}">Logout</a>
+        {% else %}
+            <a href="#"><img src="{% static 'img/default-profile.png' %}" alt="My image" width="2%"></a>
+            <a href="{% url 'user:login_render' %}">Login</a>
+            <a href="{% url 'user:signup_render' %}">Signup</a>
+        {% endif %} 
+        </div>
+
+        <div>
+            <form method="GET" action="{% url 'product:list_filter_product' %}" >
+                <input type="text" placeholder="Buscar" name="buscar" value="{{request.GET.buscar}}" />
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+
+    {% endblock %}
+
+    {% block carrito %}
+        <div>
+            <h1>CARRITO</h1>
+            <div class="alert alert-primary" role="alert">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="row" colspan="3" class="text-center">CARRITO</th>
+                    </tr>
+                    <tr>
+                      <th scope="col">NOMBRE</th>
+                      <th scope="col">PRECIO</th>
+                      <th scope="col">CANTIDAD</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% if request.session.carrito.items %}
+                  {% for key, value in request.session.carrito.items %}
+                    <tr>
+                      <td>{{value.nombre}}</td>
+                      <td>{{value.precio}}</td>
+                      <td>{{value.acumulado}}
+                        <a href="{% url 'product:Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+                        <a href="{% url 'product:Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  {% else %}
+                  <tr>
+                      <td colspan="3">
+                          <div class="alert alert-danger text-center"> Sin Productos </div>
+                      </td>
+                  </tr>
+                  {% endif %}
+                    <tr>
+                      <th scope="row">Total:</th>
+                      <td colspan="2">$ {{total_carrito}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <hr>
+                </div>
+                <div class="row text-center">
+                    <div class="col-6"><a href="{% url 'product:CLS' %}" class="btn btn-danger">Limpiar</a></div>
+                    <div class="col-6"><a href="{% url 'product:Sav' %}" class="btn btn-success">Guardar</a></div>
+                </div>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock  %}
+
+
+    {% block footer %}
+        <a href="#">Atencion al cliente</a>
+        <p>© 2022 Todos los derechos reservados</p>
+    {% endblock  %}
+    
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="sp-detail-product">
+  {% if product.image %}
+  <img src="{{product.image.url}}" width="20%" alt="" />
+  {% endif %}
+  <h2>{{ product.name }}</h2>
+  <p>Descripcion :</p>
+  <p>{{ product.description }}</p>
+  <h3>$ {{product.price}}</h3>
+
+  <form method="POST" action="#" enctype="multipart/form-data">
+    <input type="number" name="quantity" , value="1" , min="0" />
+    <button type="submit">Añadir al carro</button>
+  </form>
+  <a href="{% url 'product:Add' product.product_id %}">Agregar al carrito</a>
+</div>
+
+{% endblock %}

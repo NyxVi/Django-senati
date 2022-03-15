@@ -1,0 +1,41 @@
+.product {
+  display: flex;
+  justify-content: space-around;
+  // gap: 6em;
+  color: white;
+  max-width: 900px;
+  margin: 4em auto;
+  &-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+  &-img {
+    display: block;
+    width: 300px;
+    height: 100%;
+    object-fit: contain;
+    &-container {
+      max-height: 400px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+    }
+  }
+  &-title {
+    margin-bottom: 16px;
+  }
+  &-title-section {
+    font-weight: bold;
+  }
+  &-text {
+    margin: 0.4em 0;
+    flex-grow: 1;
+  }
+  &-price {
+    color: $red;
+    font-weight: bold;
+    font-size: 1.6em;
+    margin: 0.4em 0;
+  }
+}

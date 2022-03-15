@@ -1,0 +1,18 @@
+@use '../colors';
+
+.button {
+  cursor: pointer;
+  border: 2px solid $red;
+  background-color: $red;
+  color: white;
+  padding: 0.6em 0.8em;
+  border-radius: 0.4em;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: transparent;
+  }
+  &:active {
+    background-color: $red;
+  }
+}
