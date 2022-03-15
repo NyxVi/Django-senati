@@ -1,20 +1,36 @@
-{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>Product</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      {% block content %}
+      <div class="sp-login">
+        <img src="/media/assets/logo-round-white.svg" class="login-logo" />
+        <form method="POST" action="{% url 'user:login' %}" class="login">
+          {% csrf_token %}
+          <p>Username</p>
+          <input type="text" name="username" class="input input_dark" />
+          <br />
+          <p>Password</p>
+          <input type="password" name="password" class="input input_dark" />
+          <br />
+          {% if error %}
+          <p style="margin-bottom: 0.6em">{{ error }}</p>
+          {% endif %}
+          <div style="text-align: center">
+            <button class="button" type="submit">Login</button>
+          </div>
+        </form>
+      </div>
 
-    <form method="POST" action="{% url 'user:login' %}">
-        {% csrf_token %}
-        <p>Username</p>
-        <input type="text" name="username">
-        <br>
-        <p>Password</p>
-        <input type="password" name="password">
-        <br>
-        
-        <button type="submit">Login</button>
-        
-        {% if error %}
-            {{ error }}
-        {% endif %}
-    
-    </form>
-
-{% endblock %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

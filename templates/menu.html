@@ -15,7 +15,17 @@
       <span class="menu-cart-count is-active">3</span>
       <img class="menu-cart-icon" src="/media/assets/icon-cart.svg" alt="" />
       <div class="itemOptions-options">
-        <div class="itemOptions-item">Este seria un ejemplo</div>
+        {% if request.session.carrito.items %} {% for key,value in
+        request.session.carrito.items.items %}
+
+        <div class="itemOptions-item">
+          <p>{{value.name}}</p>
+          <p>S./{{value.price}}</p>
+          <p>{{value.acumulado}}</p>
+        </div>
+        {% endfor %} {% else %}
+        <p>Sin productos</p>
+        {% endif %}
       </div>
     </div>
     <div class="menu-user itemOptions" id="menu-user">

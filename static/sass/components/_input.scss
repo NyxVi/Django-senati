@@ -1,0 +1,9 @@
+.input {
+  padding: 1em;
+  border-radius: 0.4em;
+  &_dark {
+    background-color: $blueDark;
+    color: white;
+    box-shadow: 0 0 3px 3px rgba(26, 26, 26, 0.349);
+  }
+}

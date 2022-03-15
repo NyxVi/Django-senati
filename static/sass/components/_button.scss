@@ -1,18 +1,24 @@
 @use '../colors';
 
 .button {
+  $bg-color: $red;
   cursor: pointer;
-  border: 2px solid $red;
-  background-color: $red;
+  border: 2px solid $bg-color;
+  background-color: $bg-color;
   color: white;
   padding: 0.6em 0.8em;
   border-radius: 0.4em;
   font-weight: bold;
   transition: background-color 0.3s;
+  &_green {
+    $bg-color: rgb(44, 99, 79);
+    border: 2px solid $bg-color;
+    background-color: $bg-color;
+  }
   &:hover {
     background-color: transparent;
   }
   &:active {
-    background-color: $red;
+    background-color: $bg-color;
   }
 }

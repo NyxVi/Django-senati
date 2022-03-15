@@ -421,11 +421,52 @@ a {
   font-weight: bold;
   transition: background-color 0.3s;
 }
+.button_green {
+  border: 2px solid #2c634f;
+  background-color: #2c634f;
+}
 .button:hover {
   background-color: transparent;
 }
 .button:active {
-  background-color: #ed6565;
+  background-color: #2c634f;
+}
+
+.input {
+  padding: 1em;
+  border-radius: 0.4em;
+}
+.input_dark {
+  background-color: #333c54;
+  color: white;
+  box-shadow: 0 0 3px 3px rgba(26, 26, 26, 0.349);
+}
+
+.table {
+  border-collapse: collapse;
+  background: rgba(46, 46, 46, 0.829);
+  color: white;
+  border-radius: 20px;
+}
+.table th,
+.table td {
+  border-radius: 20px;
+}
+.table tr {
+  background-color: rgba(53, 53, 53, 0.829);
+}
+.table tr:nth-last-of-type(2n-1) {
+  background-color: #222222;
+}
+.table th {
+  padding: 0.6em 0.8em;
+}
+.table td {
+  text-align: center;
+  padding: 0.4em 0.8em;
+}
+.table td.table-item-description {
+  text-align: left;
 }
 
 .container {
@@ -582,6 +623,49 @@ a {
   padding: 4em 0;
 }
 
+.login {
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1.2em 1.3em;
+  background-color: #202020;
+  color: white;
+  border-radius: 0.8em;
+}
+.login_large {
+  width: 330px;
+}
+.login input {
+  margin: 0.8em 0 1em;
+}
+.login input:last-of-type {
+  margin-bottom: 2em;
+}
+.login img {
+  display: block;
+  margin: 0.4em;
+}
+
+.sp-login {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6em;
+  padding-bottom: 2em;
+  min-height: 100vh;
+  background: linear-gradient(#1d2377, #16162c);
+}
+.sp-login .login-logo {
+  width: 60px;
+  display: block;
+  margin: 1em;
+}
+.sp-login_short {
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
 .sp-tendencia {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -643,11 +727,24 @@ a {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 2em 1em;
-  min-height: 90vh;
+  min-height: 80vh;
 }
 
 .sp-detail-product {
   min-height: 70vh;
+}
+
+.sp-list-product .container-button {
+  text-align: right;
+}
+.sp-list-product .btn-create {
+  display: inline-flex;
+  margin: 1em 0;
+}
+.sp-list-product h1 {
+  color: white;
+  text-align: center;
+  padding: 1em 0;
 }
 
 /*# sourceMappingURL=main.css.map */

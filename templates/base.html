@@ -17,8 +17,12 @@
     {% block header %}
 
         <div>
+        {% if user.username %}
         {% if user.image %}
-            <img src="{{ user.image.url }}" class="rounded-circle" height="50"/>
+        <img src="{{ user.image.url }}" class="rounded-circle" height="50"/>
+        {% else %}   
+          
+        {% endif %}
             <h5>@{{ user.username }} | {{user.first_name}} {{user.last_name}} </h5>
             <a href="{% url 'user:logout' %}">Logout</a>
         {% else %}

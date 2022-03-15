@@ -1,27 +1,45 @@
-{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>Product</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      {% block content %}
+      <div class="sp-login sp-login_short">
+        <img src="/media/assets/logo-round-white.svg" class="login-logo" />
+        <form method="POST" action="{% url 'user:signup' %}" enctype="multipart/form-data" class="login login_large">
+            {% csrf_token %}
+            <p>Username</p>
+            <input type="text" name="username" class="input input_dark" required/>
+            <br>
+            <p>Email</p>
+            <input type="email" name="email" class="input input_dark" required/>
+            <br>
+            <p>Password</p>
+            <input type="password" name="password" class="input input_dark" required/>
+            <br>
+            <p>First name</p>
+            <input type="text" name="fname" class="input input_dark" required/>
+            <br>
+            <p>Last name</p>
+            <input type="text" name="lname" class="input input_dark" required/>
+            <br
+            <p>Image profile</p>
+            <input style="margin-bottom:1em;" type="file" name="image" class="input input_dark" id="input-file" required/>
+            <img href="" alt="No hay ninguna imagen" id="input-file-img"/>
+            <br>
+            <button class="button" type="submit">Create</button>
+        </form>
+      </div>
 
-    <form method="POST" action="{% url 'user:signup' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>Username</p>
-        <input type="text" name="username" />
-        <br>
-        <p>Email</p>
-        <input type="email" name="email" />
-        <br>
-        <p>Password</p>
-        <input type="password" name="password" />
-        <br>
-        <p>First name</p>
-        <input type="text" name="fname" />
-        <br>
-        <p>Last name</p>
-        <input type="text" name="lname" />
-        <br
-        <p>Image profile</p>
-        <input type="file" name="image" />
-        <br>
-        <button type="submit">Create</button>
-    </form>
-
-{% endblock %}
-
+      {% endblock %}
+    </div>
+    <script src="{% static 'js/signup.js' %}"></script>
+  </body>
+</html>

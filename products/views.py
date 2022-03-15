@@ -117,7 +117,7 @@ def agregar_producto(request, producto_id):
     context = {
         'carrito' : carrito
     }
-    return render(request,'base.html', context = context)
+    return render(request,'home.html', context = context)
     # return redirect("user:index")
 
 def restar_producto(request, producto_id):
@@ -127,7 +127,7 @@ def restar_producto(request, producto_id):
     context = {
         'carrito' : carrito
     }
-    return render(request,'base.html', context = context)
+    return render(request,'home.html', context = context)
 
 def eliminar_producto(request, producto_id):
     carrito = Carrito(request)
@@ -136,7 +136,7 @@ def eliminar_producto(request, producto_id):
     context = {
         'carrito' : carrito
     }
-    return render(request,'base.html', context = context)
+    return render(request,'home.html', context = context)
     # return redirect("user:index")
 
 
@@ -146,7 +146,7 @@ def limpiar_carrito(request):
     context = {
         'carrito' : carrito
     }
-    return render(request,'base.html', context = context)
+    return render(request,'home.html', context = context)
     # return redirect("user:index")
     
 def guardar_carrito(request):
@@ -155,4 +155,4 @@ def guardar_carrito(request):
     context = {
         'carrito' : carrito
     }
-    return render(request,'base.html', context = context)    
+    return render(request,'home.html', context = context)    

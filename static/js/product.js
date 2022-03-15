@@ -7,4 +7,4 @@ const formCart = document.getElementById('formCart')
 
 new ItemOptions({ element: menuUser })
 new ItemOptions({ element: menuCart })
-new ValidateForm(formCart, { number: true, validateOnWriting: true })
+// new ValidateForm(formCart, { number: true, validateOnWriting: true })

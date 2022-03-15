@@ -17,7 +17,10 @@
     </div>
   </a>
   {% endfor %} {% else %}
-  <h3>Lo sentimos, no encotramos el producto que buscas</h3>
+  <h3 style="color:white;text-align:center;width:100%;margin:3em 0 .4em;font-size:1.6em">Lo sentimos, no encotramos el producto que buscas</h3>
+  <div style="text-align:center;width:100%">
+    <a href="/users/index/" class="button">Regresar</a>
+  </div>
   {% endif %}
 </div>
   <script type="module" src="{% static 'js/product.js' %}"></script>

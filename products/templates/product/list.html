@@ -1,44 +1,72 @@
-{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <title>Product</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container sp-list-product">
+        {% block content %}
 
-    <h1>Product List</h1>
-    <a href="{% url 'product:create' %}">Create</a> 
-    {{ product_order_date1 }}
-    {{ product_order_date2 }}
-    <table style="background-color:whitesmoke" text-align="center" >
-            <thead>
-                <tr>
-                    <th width="12%">ID</th>
-                    <th width="12%">Name</th>
-                    <th width="12%">Description</th>
-                    <th width="12%">Category</th>
-                    <th width="12%">Price</th>
-                    <th width="12%">Stock</th>
-                    <th width="12%">Image</th>
-                    <th width="12%">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in product_list %}
-                <tr>
-                <td>{{product.product_id}}</td>
-                <td>{{product.name}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.category}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.stock}}</td>
-                <td>
-                    {% if product.image  %}
-                        <img src="{{product.image.url}}" width="100%" alt="" >
-                    {% endif %}
-                </td> 
-                <td>
-                    <a href="{% url 'product:update' pk=product.product_id %}">( Update )</a> 
-                    <a href="{% url 'product:delete' pk=product.product_id %}">( Delete )</a> 
-                </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-    </table>
-    
+        <h1>Product List</h1>
+        <div class="container-button">
+          <a
+            class="btn-create button button_green"
+            href="{% url 'product:create' %}"
+            >Create</a
+          >
+        </div>
+        {{ product_order_date1 }} {{ product_order_date2 }}
+        <table text-align="center" class="table">
+          <thead>
+            <tr>
+              <th width="12%" class="table-item-id">ID</th>
+              <th width="12%">Name</th>
+              <th width="12%">Description</th>
+              <th width="12%">Category</th>
+              <th width="12%">Price</th>
+              <th width="12%">Stock</th>
+              <th width="12%">Image</th>
+              <th width="12%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in product_list %}
+            <tr>
+              <td class="table-item-id">{{product.product_id}}</td>
+              <td>{{product.name}}</td>
+              <td class="table-item-description">{{product.description}}</td>
+              <td>{{product.category}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.stock}}</td>
+              <td>
+                {% if product.image %} {% comment %}
+                <img src="{{product.image.url}}" width="100%" alt="" />
+                {% endcomment %}
+                <a href="#">Ver imagen</a>
+                {% endif %}
+              </td>
+              <td>
+                <a href="{% url 'product:update' pk=product.product_id %}"
+                  >( Update )</a
+                >
+                <a href="{% url 'product:delete' pk=product.product_id %}"
+                  >( Delete )</a
+                >
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
 
-{% endblock %}
+        {% endblock %}
+      </div>
+    </div>
+    <script src="{% static 'js/signup.js' %}"></script>
+  </body>
+</html>

@@ -43,15 +43,11 @@
               alt=""
             />
             <div class="itemOptions-options">
-              {% if not user.username %}
-              <div class="itemOptions-item">
-                Inicia sesion para usar el carrito
-              </div>
-              {% endif %}
+              <p class="itemOptions-item">Hello</p>
             </div>
           </div>
           <div class="menu-user itemOptions" id="menu-user">
-            {% if user.username and user.img %}
+            {% if user.username %} {% if user.image %}
             <img class="menu-user-icon" src="{{user.image.url}}" alt="" />
             {% else %}
             <img
@@ -59,11 +55,17 @@
               src="/media/assets/icon-user.svg"
               alt=""
             />
+            {% endif %} {% else %}
+            <img
+              class="menu-user-icon"
+              src="/media/assets/icon-user.svg"
+              alt=""
+            />
             {% endif %}
             <div class="itemOptions-options">
-              {% if user.username and user.img %}
-              <p class="itemOptions-item">{{user.username}}</p>
+              {% if user.username %}
               <p class="itemOptions-item">
+                {{user.username}} <br />
                 {{user.first_name}} {{user.last_name}}
               </p>
               <a
@@ -87,7 +89,23 @@
           </div>
         </div>
       </div>
-      {% endblock menu%} {% block content%} {% endblock content%}
+      {% endblock menu%} {% block carrito %}
+      <div>
+        {% if request.session.carrito.items %} {% comment %} {% for key,value in
+        request.session.carrito.items.items %}
+
+        <div class="itemOptions-item">
+          <p>{{value.name}}</p>
+          <p>S./{{value.price}}</p>
+          <p>{{value.acumulado}}</p>
+        </div>
+        {% endfor %} {% endcomment %}
+        <p>Si hay productos</p>
+        {% else %}
+        <p>Sin productos</p>
+        {% endif %}
+      </div>
+      {% endblock %} {% block content%} {% endblock content%}
       <div class="footer"><img src="/media/assets/gamestore.svg" /></div>
     </div>
   </body>
