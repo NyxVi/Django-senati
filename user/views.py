@@ -79,6 +79,7 @@ def SignupView(request):
         user.last_name = request.POST['lname']
         user.image = request.FILES['image']
         user.save()
+        
     else :
         return render(request, 'user/signup.html')
         

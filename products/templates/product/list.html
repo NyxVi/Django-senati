@@ -48,25 +48,32 @@
                 {% if product.image %} {% comment %}
                 <img src="{{product.image.url}}" width="100%" alt="" />
                 {% endcomment %}
-                <a href="#">Ver imagen</a>
+                <a href="#" class="js-img" data-url="{{product.image.url}}"
+                  >Ver imagen</a
+                >
                 {% endif %}
               </td>
-              <td>
-                <a href="{% url 'product:update' pk=product.product_id %}"
-                  >( Update )</a
-                >
+              <td class="td-icon">
+                <a href="{% url 'product:update' pk=product.product_id %}">
+                  <img class="icon-table" src="/media/assets/icon-edit.svg"
+                /></a>
                 <a href="{% url 'product:delete' pk=product.product_id %}"
-                  >( Delete )</a
-                >
+                  ><img class="icon-table" src="/media/assets/icon-trash.svg"
+                /></a>
               </td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
-
+        <div class="show-img" id="show-img">
+          <div class="show-img-c">
+            <span class="show-img-close" id="show-img-close">X</span>
+            <img id="img-element" src="" />
+          </div>
+        </div>
+        <script type="module" src="{% static 'js/productList.js' %}"></script>
         {% endblock %}
       </div>
     </div>
-    <script src="{% static 'js/signup.js' %}"></script>
   </body>
 </html>

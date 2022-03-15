@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <form method="POST" action="{% url 'sale:confirm_buy' %}">
+          {% csrf_token %} {% if request.session.carrito %}
+          <br />
+          {% for key, value in request.session.carrito.items %}
+          <tr>
+            <input
+              type="hidden"
+              name="product_id"
+              value="{{value.producto_id}}"
+            />
+            <input
+              type="hidden"
+              name="cantidad"
+              min="0"
+              value="{{value.cantidad}}"
+            />
+            <input
+              type="hidden"
+              name="total"
+              min="0"
+              value="{{total_carrito}}"
+            />
+            <p>Nombre</p>
+            <td>{{value.nombre}}</td>
+            <p>Precio</p>
+            <td>{{value.precio}}</td>
+            <p>cantidad</p>
+            <td>{{value.cantidad}}</td>
+            <hr />
+          </tr>
+          <br />
+          {% endfor %} {% else %}
+          <tr>
+            <td colspan="3">
+              <div class="alert alert-danger text-center">Sin Productos</div>
+            </td>
+          </tr>
+          {% endif %}
+
+          <p>$ {{total_carrito}}</p>
+
+          <button type="submit">Comprar</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -443,6 +443,7 @@ a {
 }
 
 .table {
+  border: 1px solid white;
   border-collapse: collapse;
   background: rgba(46, 46, 46, 0.829);
   color: white;
@@ -451,12 +452,7 @@ a {
 .table th,
 .table td {
   border-radius: 20px;
-}
-.table tr {
-  background-color: rgba(53, 53, 53, 0.829);
-}
-.table tr:nth-last-of-type(2n-1) {
-  background-color: #222222;
+  border: 1px solid white;
 }
 .table th {
   padding: 0.6em 0.8em;
@@ -734,6 +730,9 @@ a {
   min-height: 70vh;
 }
 
+.sp-list-product {
+  min-height: 100vh;
+}
 .sp-list-product .container-button {
   text-align: right;
 }
@@ -745,6 +744,56 @@ a {
   color: white;
   text-align: center;
   padding: 1em 0;
+}
+.sp-list-product table thead {
+  background-color: #1b1b1b;
+}
+.sp-list-product table a {
+  text-decoration: underline;
+}
+.sp-list-product table .td-icon a {
+  display: inline-block;
+}
+.sp-list-product table .td-icon .icon-table {
+  width: 20px;
+}
+.sp-list-product .show-img {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(34, 34, 34, 0.76);
+}
+.sp-list-product .show-img-c {
+  position: relative;
+}
+.sp-list-product .show-img img {
+  display: block;
+  max-width: 500px;
+  max-height: 80vh;
+}
+.sp-list-product .show-img .show-img-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eb7f7f;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

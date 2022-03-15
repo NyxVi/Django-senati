@@ -13,6 +13,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls.base import reverse_lazy
 from django.db.models import Q
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 # Models
 from products.models import Product
@@ -24,44 +26,48 @@ from products.forms import ProductFormCreate, ProductFormUpdate, ProductForm
 from products.carrito import Carrito
 
 
-class ProductsListView(ListView):
+class ProductsListView(PermissionRequiredMixin,ListView):
     """ Return all products """
     template_name = 'product/list.html'
     model = Product
+    permission_required = 'products.view_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
 
 
-class ProductsCreateView(CreateView):
+class ProductsCreateView(PermissionRequiredMixin,CreateView):
     """ Produts create view """
     template_name = 'product/create.html'
     form_class  = ProductForm
     success_url = reverse_lazy('product:list')
+    permission_required = 'products.add_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
 
 
-class ProductsUpdateView(UpdateView):
+class ProductsUpdateView(PermissionRequiredMixin,UpdateView):
     """ Products update view """
     model = Product
     template_name = 'product/update.html'
     form_class  = ProductForm
     success_url = reverse_lazy('product:list')
+    permission_required = 'products.change_product'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
 
 
-class ProductsDeleteView(DeleteView):
+class ProductsDeleteView(PermissionRequiredMixin,DeleteView):
     """ Products delete view """
     model = Product
     template_name = 'product/delete.html'
     success_url = reverse_lazy('product:list')
+    permission_required = 'products.delete_product'
 
 
 def DetailProductView(request, pk):
@@ -155,4 +161,4 @@ def guardar_carrito(request):
     context = {
         'carrito' : carrito
     }
-    return render(request,'home.html', context = context)    
+    return render(request,'home.html', context = context)

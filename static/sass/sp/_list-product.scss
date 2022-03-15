@@ -1,4 +1,5 @@
 .sp-list-product {
+  min-height: 100vh;
   .container-button {
     text-align: right;
   }
@@ -10,5 +11,62 @@
     color: white;
     text-align: center;
     padding: 1em 0;
+  }
+  table {
+    thead {
+      background-color: rgb(27, 27, 27);
+    }
+    a {
+      text-decoration: underline;
+    }
+    .td-icon {
+      a {
+        display: inline-block;
+      }
+      .td-icon {
+      }
+      .icon-table {
+        width: 20px;
+      }
+    }
+  }
+  .show-img {
+    position: absolute;
+    z-index: $zFront;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    // height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(34, 34, 34, 0.76);
+    &-c {
+      position: relative;
+    }
+    img {
+      display: block;
+      max-width: 500px;
+      max-height: 80vh;
+    }
+    .show-img-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(235, 127, 127);
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      cursor: pointer;
+    }
   }
 }
